@@ -1,0 +1,25 @@
+C:\Users\Abenav Sunku\Downloads\report_agent\venv\Lib\site-packages\vertexai\generative_models\_generative_models.py:433: UserWarning: This feature is deprecated as of June 24, 2025 and will be removed on June 24, 2026. For details, see https://cloud.google.com/vertex-ai/generative-ai/docs/deprecations/genai-vertexai-sdk.
+  warning_logs.show_deprecation_warning()
+C:\Users\Abenav Sunku\Downloads\report_agent\venv\Lib\site-packages\vertexai\generative_models\_generative_models.py:433: UserWarning: This feature is deprecated as of June 24, 2025 and will be removed on June 24, 2026. For details, see https://cloud.google.com/vertex-ai/generative-ai/docs/deprecations/genai-vertexai-sdk.
+  warning_logs.show_deprecation_warning()
+Traceback (most recent call last):
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\report_agent.py", line 313, in execute_report_pipeline
+    raise Exception(f"SQL failed validation after {MAX_REPAIR_ATTEMPTS} attempts: {error_msg}")
+Exception: SQL failed validation after 3 attempts: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:silver was not found in location US
+
+Location: us
+Job ID: 88701c6e-ae2c-45c9-aa41-e36dc735a311
+
+Traceback (most recent call last):
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\scratch_run_pipeline_tests.py", line 13, in main
+    res = agent.execute_report_pipeline(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\report_agent.py", line 490, in execute_report_pipeline
+    raise e
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\report_agent.py", line 313, in execute_report_pipeline
+    raise Exception(f"SQL failed validation after {MAX_REPAIR_ATTEMPTS} attempts: {error_msg}")
+Exception: SQL failed validation after 3 attempts: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:silver was not found in location US
+
+Location: us
+Job ID: 88701c6e-ae2c-45c9-aa41-e36dc735a311
+

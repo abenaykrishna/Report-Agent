@@ -1,0 +1,11 @@
+fastapi==0.111.0
+uvicorn==0.30.1
+google-cloud-aiplatform==1.56.0
+google-cloud-bigquery==3.25.0
+google-cloud-datacatalog==3.19.1
+google-cloud-datalineage==0.4.1
+looker-sdk==24.10.0
+openpyxl==3.1.5
+pandas==2.2.2
+pydantic==2.7.4
+python-multipart>=0.0.9

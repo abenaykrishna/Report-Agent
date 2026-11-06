@@ -1,0 +1,9 @@
+/* Custom styling overrides for App components */
+.drop-zone {
+  transition: all 0.3s ease-in-out;
+}
+.drop-zone-active {
+  border-color: #3b82f6 !important;
+  background-color: #eff6ff !important;
+  transform: scale(1.01);
+}

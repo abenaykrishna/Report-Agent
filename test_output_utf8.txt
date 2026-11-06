@@ -1,0 +1,435 @@
+.\venv\Scripts\python.exe : C:\Users\Abenav 
+Sunku\Downloads\report_agent\venv\Lib\site-packages\vertexai\generative_models\_generative_models.py:433: UserWarning: 
+This feature is deprecated as of June 24, 2025 and will be removed on June 24, 2026. For details, see 
+https://cloud.google.com/vertex-ai/generative-ai/docs/deprecations/genai-vertexai-sdk.
+At line:1 char:1
++ .\venv\Scripts\python.exe scratch_run_pipeline_tests.py > test_output ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Abenav...i-vertexai-sdk.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warning_logs.show_deprecation_warning()
+C:\Users\Abenav 
+Sunku\Downloads\report_agent\venv\Lib\site-packages\vertexai\generative_models\_generative_models.py:433: UserWarning: 
+This feature is deprecated as of June 24, 2025 and will be removed on June 24, 2026. For details, see 
+https://cloud.google.com/vertex-ai/generative-ai/docs/deprecations/genai-vertexai-sdk.
+  warning_logs.show_deprecation_warning()
+Traceback (most recent call last):
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\report_agent.py", line 280, in execute_report_pipeline
+    raise Exception(f"SQL failed validation after {MAX_REPAIR_ATTEMPTS} attempts: {error_msg}")
+Exception: SQL failed validation after 3 attempts: 400 POST 
+https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Table 
+"silver_policy_snapshot" must be qualified with a dataset (e.g. dataset.table).
+
+Location: us
+Job ID: 916a0e1b-27dc-4614-b8f0-9aa0f10d96eb
+
+Traceback (most recent call last):
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\scratch_run_pipeline_tests.py", line 13, in main
+    res = agent.execute_report_pipeline(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\report_agent.py", line 457, in execute_report_pipeline
+    raise e
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\report_agent.py", line 280, in execute_report_pipeline
+    raise Exception(f"SQL failed validation after {MAX_REPAIR_ATTEMPTS} attempts: {error_msg}")
+Exception: SQL failed validation after 3 attempts: 400 POST 
+https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Table 
+"silver_policy_snapshot" must be qualified with a dataset (e.g. dataset.table).
+
+Location: us
+Job ID: 916a0e1b-27dc-4614-b8f0-9aa0f10d96eb
+
+Traceback (most recent call last):
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\report_agent.py", line 280, in execute_report_pipeline
+    if optional_filters:
+            ^^^^^^^^^^^^^
+Exception: SQL failed validation after 3 attempts: 404 POST 
+https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset 
+anz-cloud-migration:anz-cloud-migration was not found in location US
+
+Location: us
+Job ID: 6a4fafb0-5dde-43a6-8ba5-55dbde6cd7cd
+
+Traceback (most recent call last):
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\scratch_run_pipeline_tests.py", line 30, in main
+    res = agent.execute_report_pipeline(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\report_agent.py", line 457, in execute_report_pipeline
+    # Generate workbook
+    ^^^^^^^
+  File "C:\Users\Abenav Sunku\Downloads\report_agent\report_agent.py", line 280, in execute_report_pipeline
+    if optional_filters:
+            ^^^^^^^^^^^^^
+Exception: SQL failed validation after 3 attempts: 404 POST 
+https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset 
+anz-cloud-migration:anz-cloud-migration was not found in location US
+
+Location: us
+Job ID: 6a4fafb0-5dde-43a6-8ba5-55dbde6cd7cd
+
+[Looker Service] Warning: Looker config not found. Running in headless/safe mode.
+
+==================================================
+TEST 1: NATURAL LANGUAGE INPUT MODE
+==================================================
+
+[Agent] Initiating Unified Pipeline for input: 'Generate Policy Lapse Report for June 2025'
+
+[Step 1] Parsing input and performing Query Understanding...
+
+[Business Query Plan] generated successfully:
+{
+  "report_name": "Policy Lapse Report",
+  "required_columns": [
+    "Policy Number",
+    "Customer Name",
+    "Product Type",
+    "Issue Date",
+    "Lapse Date",
+    "Premium Amount",
+    "Policy Status"
+  ],
+  "business_filters": [
+    [
+      {
+        "concept": "Lapse Date",
+        "operator": "between",
+        "value": [
+          "2025-06-01",
+          "2025-06-30"
+        ]
+      }
+    ]
+  ],
+  "aggregations": [],
+  "sorting": [],
+  "grouping": []
+}
+
+[Step 2] Discovering assets and schemas...
+
+[Metadata Discovery] Mapping business concepts to physical columns...
+Mapped concepts:
+{
+  "Policy Number": [
+    "policy_id",
+    "policy_id_nk",
+    "policy_no"
+  ],
+  "Customer Name": [
+    "customer_name_masked",
+    "customer_name"
+  ],
+  "Product Type": [
+    "policy_type_std",
+    "product_name"
+  ],
+  "Issue Date": [
+    "policy_start_date"
+  ],
+  "Lapse Date": [],
+  "Premium Amount": [
+    "premium"
+  ],
+  "Policy Status": [
+    "policy_status",
+    "status_clean"
+  ]
+}
+
+[Step 3] Selecting column sources via Coverage Score algorithm...
+Resolved Column Mapping:
+{
+  "Policy Number": {
+    "dataset_name": "gold_insurance_layer",
+    "table_name": "policy_lapse_recovery_summary",
+    "column_name": "policy_no"
+  },
+  "Customer Name": {
+    "dataset_name": "gold_insurance_layer",
+    "table_name": "policy_lapse_recovery_summary",
+    "column_name": "customer_name"
+  },
+  "Product Type": {
+    "dataset_name": "gold_insurance_layer",
+    "table_name": "policy_lapse_recovery_summary",
+    "column_name": "product_name"
+  },
+  "Issue Date": {
+    "dataset_name": "claims_silver",
+    "table_name": "silver_policy_snapshot",
+    "column_name": "policy_start_date"
+  },
+  "Premium Amount": {
+    "dataset_name": "gold_insurance_layer",
+    "table_name": "policy_lapse_recovery_summary",
+    "column_name": "premium"
+  },
+  "Policy Status": {
+    "dataset_name": "gold_insurance_layer",
+    "table_name": "policy_lapse_recovery_summary",
+    "column_name": "policy_status"
+  }
+}
+
+[Step 4] Resolving required table joins...
+[Join Discovery] Finding paths to connect selected tables: ['policy_lapse_recovery_summary', 'silver_policy_snapshot']
+[Join Discovery] Warning: No relationship path found between policy_lapse_recovery_summary and silver_policy_snapshot
+Active tables for query: ['policy_lapse_recovery_summary', 'silver_policy_snapshot']
+Discovered Join Path list: []
+
+[Step 5] Resolving physical filter conditions...
+Resolved Filter conditions: ["policy_lapse_recovery_summary.expiry_date = 'YYYY-MM-DD'", 'expiry_date IS NOT NULL']
+
+[Step 6] Generating Dynamic SQL...
+[SQL Generator] Sending plan components to Gemini for SQL compilation...
+
+Generated SQL:
+
+SELECT
+  t1.policy_no AS `Policy Number`,
+  t1.customer_name AS `Customer Name`,
+  t1.product_name AS `Product Type`,
+  t2.policy_start_date AS `Issue Date`,
+  t1.premium AS `Premium Amount`,
+  t1.policy_status AS `Policy Status`
+FROM
+  `anz-cloud-migration.gold_insurance_layer.policy_lapse_recovery_summary` AS t1
+CROSS JOIN
+  `anz-cloud-migration.claims_silver.silver_policy_snapshot` AS t2
+WHERE
+  t1.expiry_date = 'YYYY-MM-DD'
+  AND t1.expiry_date IS NOT NULL
+
+[Step 7] Auditing joins and validating SQL...
+[Audit] No relationship graph available ù skipping join audit.
+SQL Validation Failed: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:claims_silver was not found in location US
+
+Location: us
+Job ID: 9cd595d3-7296-4e98-b51c-2b4ec6a2d6b7
+
+
+[SQL Repair] Attempt 1/3 - validation error: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:claims_silver was not found in location US
+
+Location: us
+Job ID: 9cd595d3-7296-4e98-b51c-2b4ec6a2d6b7
+
+
+[SQL Repair] Repaired SQL:
+
+SELECT
+  t1.policy_no AS `Policy Number`,
+  t1.customer_name AS `Customer Name`,
+  t1.product_name AS `Product Type`,
+  t2.policy_start_date AS `Issue Date`,
+  t1.premium AS `Premium Amount`,
+  t1.policy_status AS `Policy Status`
+FROM
+  `anz-cloud-migration.gold_insurance_layer.policy_lapse_recovery_summary` AS t1
+CROSS JOIN
+  `anz-cloud-migration.silver_insurance_layer.silver_policy_snapshot` AS t2
+WHERE
+  t1.expiry_date = 'YYYY-MM-DD'
+  AND t1.expiry_date IS NOT NULL
+[Audit] No relationship graph available ù skipping join audit.
+SQL Validation Failed: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:silver_insurance_layer was not found in location US
+
+Location: us
+Job ID: 5166cbcf-347c-44f0-99dd-4942409878ba
+
+
+[SQL Repair] Attempt 2/3 - validation error: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:silver_insurance_layer was not found in location US
+
+Location: us
+Job ID: 5166cbcf-347c-44f0-99dd-4942409878ba
+
+
+[SQL Repair] Repaired SQL:
+
+SELECT
+  t1.policy_no AS `Policy Number`,
+  t1.customer_name AS `Customer Name`,
+  t1.product_name AS `Product Type`,
+  t2.policy_start_date AS `Issue Date`,
+  t1.premium AS `Premium Amount`,
+  t1.policy_status AS `Policy Status`
+FROM
+  `anz-cloud-migration.gold_insurance_layer.policy_lapse_recovery_summary` AS t1
+CROSS JOIN
+  `silver_policy_snapshot` AS t2
+WHERE
+  t1.expiry_date = 'YYYY-MM-DD'
+  AND t1.expiry_date IS NOT NULL
+[Audit] No relationship graph available ù skipping join audit.
+SQL Validation Failed: 400 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Table "silver_policy_snapshot" must be qualified with a dataset (e.g. dataset.table).
+
+Location: us
+Job ID: 916a0e1b-27dc-4614-b8f0-9aa0f10d96eb
+
+
+[SQL Repair] Attempt 3/3 - validation error: 400 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Table "silver_policy_snapshot" must be qualified with a dataset (e.g. dataset.table).
+
+Location: us
+Job ID: 916a0e1b-27dc-4614-b8f0-9aa0f10d96eb
+
+
+[Error] Unified Pipeline failed: SQL failed validation after 3 attempts: 400 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Table "silver_policy_snapshot" must be qualified with a dataset (e.g. dataset.table).
+
+Location: us
+Job ID: 916a0e1b-27dc-4614-b8f0-9aa0f10d96eb
+
+NL Test Failed: SQL failed validation after 3 attempts: 400 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Table "silver_policy_snapshot" must be qualified with a dataset (e.g. dataset.table).
+
+Location: us
+Job ID: 916a0e1b-27dc-4614-b8f0-9aa0f10d96eb
+
+
+==================================================
+TEST 2: EXCEL TEMPLATE INPUT MODE
+==================================================
+
+[Agent] Initiating Unified Pipeline for input: 'test_dropout_leads_template.xlsx'
+
+[Step 1] Parsing input and performing Query Understanding...
+[Template Parser] Loading template workbook from: test_dropout_leads_template.xlsx
+[Template Parser] Parsed: 'Dropout Leads & Recovery Report', Columns: ['Policy Number', 'Customer Name', 'Recovery Action', 'Dropout Stage', 'Customer Response', 'Recovery Date']
+
+[Business Query Plan] generated successfully:
+{
+  "report_name": "Dropout Leads & Recovery Report",
+  "required_columns": [
+    "Policy Number",
+    "Customer Name",
+    "Recovery Action",
+    "Dropout Stage",
+    "Customer Response",
+    "Recovery Date"
+  ],
+  "business_filters": [
+    {
+      "concept": "Dropped Leads"
+    }
+  ],
+  "aggregations": [],
+  "sorting": [],
+  "grouping": []
+}
+
+[Step 2] Discovering assets and schemas...
+
+[Metadata Discovery] Mapping business concepts to physical columns...
+Mapped concepts:
+{
+  "Policy Number": [
+    "policy_id",
+    "policy_id_nk",
+    "policy_no"
+  ],
+  "Customer Name": [
+    "customer_name_masked",
+    "customer_name"
+  ],
+  "Recovery Action": [],
+  "Dropout Stage": [],
+  "Customer Response": [],
+  "Recovery Date": []
+}
+
+[Step 3] Selecting column sources via Coverage Score algorithm...
+Resolved Column Mapping:
+{
+  "Policy Number": {
+    "dataset_name": "claims_silver",
+    "table_name": "silver_customer_profile",
+    "column_name": "policy_id"
+  },
+  "Customer Name": {
+    "dataset_name": "claims_silver",
+    "table_name": "silver_customer_profile",
+    "column_name": "customer_name_masked"
+  }
+}
+
+[Step 4] Resolving required table joins...
+[Join Discovery] Finding paths to connect selected tables: ['silver_customer_profile']
+Active tables for query: ['silver_customer_profile']
+Discovered Join Path list: []
+
+[Step 5] Resolving physical filter conditions...
+Resolved Filter conditions: []
+
+[Step 6] Generating Dynamic SQL...
+[SQL Generator] Sending plan components to Gemini for SQL compilation...
+
+Generated SQL:
+
+SELECT
+    t1.policy_id AS `Policy Number`,
+    t1.customer_name_masked AS `Customer Name`
+  FROM
+    `anz-cloud-migration.claims_silver.silver_customer_profile` AS t1
+
+[Step 7] Auditing joins and validating SQL...
+[Audit] No relationship graph available ù skipping join audit.
+SQL Validation Failed: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:claims_silver was not found in location US
+
+Location: us
+Job ID: a66ef794-1e57-467a-87da-25ac51724479
+
+
+[SQL Repair] Attempt 1/3 - validation error: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:claims_silver was not found in location US
+
+Location: us
+Job ID: a66ef794-1e57-467a-87da-25ac51724479
+
+
+[SQL Repair] Repaired SQL:
+
+SELECT
+    t1.policy_id AS `Policy Number`,
+    t1.customer_name_masked AS `Customer Name`
+  FROM
+    `anz-cloud-migration.silver.silver_customer_profile` AS t1
+[Audit] No relationship graph available ù skipping join audit.
+SQL Validation Failed: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:silver was not found in location US
+
+Location: us
+Job ID: 09463944-6d08-4677-81d3-02677d17e71f
+
+
+[SQL Repair] Attempt 2/3 - validation error: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:silver was not found in location US
+
+Location: us
+Job ID: 09463944-6d08-4677-81d3-02677d17e71f
+
+
+[SQL Repair] Repaired SQL:
+
+SELECT
+    t1.policy_id AS `Policy Number`,
+    t1.customer_name_masked AS `Customer Name`
+  FROM
+    `anz-cloud-migration.silver_customer_profile` AS t1
+[Audit] No relationship graph available ù skipping join audit.
+SQL Validation Failed: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:anz-cloud-migration was not found in location US
+
+Location: us
+Job ID: 6a4fafb0-5dde-43a6-8ba5-55dbde6cd7cd
+
+
+[SQL Repair] Attempt 3/3 - validation error: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:anz-cloud-migration was not found in location US
+
+Location: us
+Job ID: 6a4fafb0-5dde-43a6-8ba5-55dbde6cd7cd
+
+
+[Error] Unified Pipeline failed: SQL failed validation after 3 attempts: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:anz-cloud-migration was not found in location US
+
+Location: us
+Job ID: 6a4fafb0-5dde-43a6-8ba5-55dbde6cd7cd
+
+Excel Template Test Failed: SQL failed validation after 3 attempts: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/anz-cloud-migration/jobs?prettyPrint=false: Not found: Dataset anz-cloud-migration:anz-cloud-migration was not found in location US
+
+Location: us
+Job ID: 6a4fafb0-5dde-43a6-8ba5-55dbde6cd7cd
+
